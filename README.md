@@ -139,7 +139,7 @@ This is an assessment project, but suggestions and improvements are welcome!
 ## 👤 Author
 
 Pratik Jawale
-- GitHub: [@pratikjawale](https://github.com/pratikjawale)
+- GitHub: [@pratikjawale]([https://github.com/pratikjawale](https://github.com/pratik183))
 
 ## 🙏 Acknowledgments
 
