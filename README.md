@@ -1,212 +1,287 @@
-# 🚛 Fleet Tracking Dashboard
+<<<<<<< HEAD
+# 🚗 Fleet Tracking Dashboard
 
-A modern, real-time fleet tracking dashboard built with React 18+ following industry best practices. This application simulates and visualizes fleet tracking data with real-time playback, comprehensive statistics, and an intuitive user interface.
+A comprehensive real-time fleet tracking dashboard that simulates vehicle movements and monitors trip events across multiple routes. Built as part of the MapUp assessment challenge.
 
-## ✨ Features
+## 🌟 Features
 
-- **Real-time Simulation**: Playback control with multiple speed options (1x, 5x, 10x, 50x, 100x)
-- **Fleet Overview**: Comprehensive statistics showing trip status across the entire fleet
-- **Individual Trip Monitoring**: Detailed cards for each trip with progress tracking
-- **Event Timeline**: View recent events for each trip
-- **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices
-- **Modern UI**: Clean, professional interface with smooth animations
+- **Real-Time Simulation**: Playback trip events with adjustable speed (1x-100x)
+- **Multi-Trip Monitoring**: Track 5 simultaneous trips across different routes
+- **Event Timeline**: Monitor location pings, speed violations, fuel levels, and technical events
+- **Fleet Analytics**: Live statistics showing completed, in-progress, and cancelled trips
+- **Responsive Design**: Modern UI with gradient cards, progress bars, and mobile-first layout
+- **Dynamic Data**: Generated trip data from real-world routes using OSRM API
 
-## 🏗️ Architecture
+## 📊 Trip Scenarios
 
-This project follows React best practices with a scalable, maintainable architecture:
+1. **Cross-Country Long Haul** - Transcontinental freight delivery
+2. **Urban Dense Delivery** - City route with frequent location updates
+3. **Mountain Route Cancelled** - High-altitude route with weather cancellation
+4. **Southern Technical Issues** - Route with device and vehicle technical events
+5. **Regional Logistics** - Regional delivery with fuel management
 
-```
-src/
-├── components/          # Reusable UI components
-│   ├── Dashboard.jsx
-│   ├── FleetSummary.jsx
-│   ├── PlaybackControls.jsx
-│   └── TripCard.jsx
-├── hooks/               # Custom React hooks
-│   ├── useSimulation.js
-│   └── useTripData.js
-├── services/            # API and business logic
-│   └── tripService.js
-├── utils/               # Helper functions
-│   └── eventHelpers.js
-├── constants/           # App constants
-│   └── index.js
-└── styles.css          # Global styles
-```
+## 🛠️ Tech Stack
 
-### Key Design Patterns
+- **Frontend**: React 18 + Vite
+- **Styling**: Modern CSS with CSS Variables, Flexbox, Grid
+- **Architecture**: Custom hooks, service layer, utility functions
+- **Data Generator**: Node.js scripts using OSRM routing API
+- **Event System**: 15+ event types (location, telemetry, fuel, battery, etc.)
 
-- **Custom Hooks**: Separation of concerns with `useTripData` and `useSimulation`
-- **Service Layer**: Business logic abstracted in `tripService`
-- **Pure Utility Functions**: Stateless helper functions in `eventHelpers`
-- **Component Composition**: Small, focused components with single responsibilities
+## 🚀 Quick Start
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
 ```bash
-git clone <your-repo-url>
-cd FleetTrackingDashboard
-```
+# Clone repository
+git clone https://github.com/YOUR_USERNAME/fleet-tracking-dashboard.git
 
-2. Install dependencies
-```bash
+# Navigate to project
+cd fleet-tracking-dashboard
+
+# Install dependencies
 npm install
-```
 
-3. Start the development server
-```bash
+# Start development server
 npm run dev
 ```
 
-4. Open your browser to `http://localhost:5173`
+Open [http://localhost:5173](http://localhost:5173) to view the dashboard.
 
-### Build for Production
+## 📁 Project Structure
 
-```bash
-npm run build
-npm run preview
+```
+fleet-tracking-dashboard/
+├── src/
+│   ├── components/       # React components (Dashboard, FleetSummary, TripCard)
+│   ├── hooks/           # Custom hooks (useSimulation, useTripData)
+│   ├── services/        # Data fetching and business logic
+│   ├── utils/           # Helper functions for event processing
+│   └── constants/       # Configuration and constants
+├── public/
+│   └── assessment-fallback-data/  # 5 pre-generated trip JSON files
+├── data-generator/      # Node.js scripts to generate custom trip data
+└── docs/               # Architecture and quick start guides
 ```
 
-## 📊 Data Structure
+## 🎮 How to Use
 
-The dashboard processes real fleet tracking data with the following event types:
+1. **Load Dashboard**: Data loads automatically from 5 trip JSON files
+2. **Control Simulation**: 
+   - Click **Play** to start simulation
+   - Adjust speed with 1x, 5x, 10x, 50x, 100x buttons
+   - Click **Pause** to stop
+   - Click **Reset** to restart from beginning
+3. **Monitor Trips**: 
+   - View fleet-wide statistics in summary cards
+   - Expand individual trip cards for detailed event logs
+   - Track real-time location, speed, fuel, and battery levels
 
-- **Trip Lifecycle**: `trip_started`, `trip_completed`, `trip_cancelled`
-- **Location Events**: `location_ping`, `signal_lost`, `signal_recovered`
-- **Vehicle State**: `vehicle_stopped`, `vehicle_moving`, `speed_violation`
-- **Telemetry**: `vehicle_telemetry`, `device_error`
-- **Warnings**: `battery_low`, `fuel_level_low`
-- **Fuel Events**: `refueling_started`, `refueling_completed`
-
-See `ARCHITECTURE.md` for detailed documentation on the data structure and event types.
-
-## 🎨 UI/UX Features
-
-### Fleet Summary Dashboard
-- Real-time statistics with color-coded cards
-- Total trips, completed, in-progress, cancelled, and not-started counts
-- Animated counters and smooth transitions
-
-### Trip Cards
-- Individual trip monitoring with progress bars
-- Real-time location and speed updates
-- Event timeline with expand/collapse functionality
-- Status badges (In Progress, Completed, Cancelled, Not Started)
-
-### Playback Controls
-- Play/Pause simulation
-- Speed control (1x to 100x)
-- Reset functionality
-- Intuitive icons and visual feedback
-
-## 🔧 Technologies Used
-
-- **React 18**: Modern React with hooks and functional components
-- **Vite**: Fast build tool and development server
-- **Vanilla CSS**: Custom styling with CSS variables and modern techniques
-- **JavaScript ES6+**: Modern JavaScript features
-
-## 📈 Performance Optimizations
-
-- Efficient event filtering with single-pass algorithms
-- Memoized calculations where appropriate
-- Lazy evaluation of expensive operations
-- Optimized re-renders with proper state management
-
-## 🧪 Code Quality
-
-- **Clean Code**: Self-documenting with clear naming conventions
-- **JSDoc Comments**: Comprehensive function documentation
-- **Error Handling**: Robust loading and error states
-- **Responsive**: Mobile-first design approach
-
-## 🎯 Best Practices Implemented
-
-1. **Component Design**
-   - Functional components with hooks
-   - Single responsibility principle
-   - Props destructuring for clarity
-
-2. **State Management**
-   - Custom hooks for complex logic
-   - Lifted state for shared data
-   - Local state for UI concerns
-
-3. **Code Organization**
-   - Clear folder structure
-   - Separated concerns (UI, logic, data)
-   - Modular, reusable code
-
-4. **Performance**
-   - Efficient data structures
-   - Controlled re-renders
-   - Optimized event processing
-
-5. **Accessibility**
-   - Semantic HTML
-   - ARIA labels where needed
-   - Keyboard navigation support
-
-## 📚 Documentation
-
-- **README.md** (this file): Project overview and getting started
-- **ARCHITECTURE.md**: Detailed architecture and best practices guide
-- **Fleet Tracking Event Types**: Reference for all event types (in assessment data)
-
-## 🚀 Deployment
-
-This app can be deployed to:
-
-- **Vercel**: `npm run build` and deploy `dist/` folder
-- **Netlify**: Connect repository for automatic deployments
-- **GitHub Pages**: Use `gh-pages` package
-- **Any static hosting**: Deploy the `dist/` folder after build
-
-### Deployment Commands
+## 🔧 Generate Custom Data
 
 ```bash
-# Build for production
-npm run build
-
-# Preview production build locally
-npm run preview
-
-# The dist/ folder contains the production build
+cd data-generator
+npm install
+npm run generate
 ```
 
-## 🎓 Learning Resources
+This creates unique trip data with randomized routes using real-world road networks.
 
-For more information on the architecture and best practices used:
+## 📚 Event Types
 
-1. Read `ARCHITECTURE.md` for detailed explanations
-2. Check the inline code comments for implementation details
-3. Review the `hooks/` folder for custom hook patterns
-4. Examine the `services/` layer for business logic separation
+The system tracks 15+ event types:
+- Location pings with GPS coordinates
+- Trip lifecycle (started, completed, cancelled)
+- Speed violations
+- Fuel level monitoring and refueling
+- Battery status and charging
+- Signal quality (lost/recovered)
+- Vehicle telemetry
+- Device errors
 
-## 📝 License
+## 🎯 Key Features
 
-This project is part of the MapUp Fleet Tracking Assessment.
+- **Temporal Filtering**: Events appear progressively as simulation time advances
+- **Progress Tracking**: Visual progress bars and percentage completion
+- **Status Indicators**: Color-coded trip states (completed, in-progress, cancelled)
+- **Event History**: Expandable timeline showing last 5 events per trip
+- **Responsive Stats**: Real-time updates to fleet-wide metrics
+
+## 🏗️ Architecture Highlights
+
+- **Custom Hooks**: Separation of state logic from UI components
+- **Service Layer**: Centralized data fetching and transformation
+- **Pure Functions**: Testable utility functions for event processing
+- **Component Composition**: Small, focused, reusable components
+- **Modern CSS**: Variables, animations, responsive design without frameworks
+
+## 📖 Documentation
+
+- [Architecture Guide](ARCHITECTURE.md) - Detailed React best practices
+- [Quick Start](QUICK_START.md) - Pattern reference and code snippets
+- [Event Types Reference](public/assessment-fallback-data/) - Complete event schema
+
+## 🎓 Learning Outcomes
+
+This project demonstrates:
+- Real-time data simulation and temporal filtering
+- React hooks for complex state management
+- Service-oriented architecture in frontend
+- Event-driven data processing
+- Responsive UI design principles
+- Clean code organization and documentation
+
+## 📄 License
+
+MIT License - feel free to use for learning and portfolio purposes
 
 ## 🤝 Contributing
 
-This is an assessment project. Please refer to the assessment guidelines for submission instructions.
+This is an assessment project, but suggestions and improvements are welcome!
 
----
+## 👤 Author
 
-**Built with ❤️ using React Best Practices** | [View Live Demo](#) | [Documentation](./ARCHITECTURE.md)
+Pratik Jawale
+- GitHub: [@pratikjawale]([https://github.com/pratikjawale](https://github.com/pratik183))
 
-## React Compiler
+## 🙏 Acknowledgments
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- MapUp for the assessment challenge
+- OSRM Project for routing data
+- React team for excellent documentation
+=======
+# � Fleet Tracking Dashboard
 
-## Expanding the ESLint configuration
+A comprehensive real-time fleet tracking dashboard that simulates vehicle movements and monitors trip events across multiple routes. Built as part of the MapUp assessment challenge.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🌟 Features
+
+- **Real-Time Simulation**: Playback trip events with adjustable speed (1x-100x)
+- **Multi-Trip Monitoring**: Track 5 simultaneous trips across different routes
+- **Event Timeline**: Monitor location pings, speed violations, fuel levels, and technical events
+- **Fleet Analytics**: Live statistics showing completed, in-progress, and cancelled trips
+- **Responsive Design**: Modern UI with gradient cards, progress bars, and mobile-first layout
+- **Dynamic Data**: Generated trip data from real-world routes using OSRM API
+
+## 📊 Trip Scenarios
+
+1. **Cross-Country Long Haul** - Transcontinental freight delivery
+2. **Urban Dense Delivery** - City route with frequent location updates
+3. **Mountain Route Cancelled** - High-altitude route with weather cancellation
+4. **Southern Technical Issues** - Route with device and vehicle technical events
+5. **Regional Logistics** - Regional delivery with fuel management
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 18 + Vite
+- **Styling**: Modern CSS with CSS Variables, Flexbox, Grid
+- **Architecture**: Custom hooks, service layer, utility functions
+- **Event System**: 15+ event types (location, telemetry, fuel, battery, etc.)
+
+## 🚀 Quick Start
+
+```bash
+# Clone repository
+git clone https://github.com/pratik183/fleet-tracking-dashboard.git
+
+# Navigate to project
+cd fleet-tracking-dashboard
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) to view the dashboard.
+
+## � Project Structure
+
+```
+fleet-tracking-dashboard/
+├── src/
+│   ├── components/       # React components (Dashboard, FleetSummary, TripCard)
+│   ├── hooks/           # Custom hooks (useSimulation, useTripData)
+│   ├── services/        # Data fetching and business logic
+│   ├── utils/           # Helper functions for event processing
+│   └── constants/       # Configuration and constants
+├── public/
+│   └── assessment-fallback-data/  # 5 pre-generated trip JSON files
+└── docs/               # Architecture and quick start guides
+```
+
+## � How to Use
+
+1. **Load Dashboard**: Data loads automatically from 5 trip JSON files
+2. **Control Simulation**: 
+   - Click **Play** to start simulation
+   - Adjust speed with 1x, 5x, 10x, 50x, 100x buttons
+   - Click **Pause** to stop
+   - Click **Reset** to restart from beginning
+3. **Monitor Trips**: 
+   - View fleet-wide statistics in summary cards
+   - Expand individual trip cards for detailed event logs
+   - Track real-time location, speed, fuel, and battery levels
+
+## 📚 Event Types
+
+The system tracks 15+ event types:
+- Location pings with GPS coordinates
+- Trip lifecycle (started, completed, cancelled)
+- Speed violations
+- Fuel level monitoring and refueling
+- Battery status and charging
+- Signal quality (lost/recovered)
+- Vehicle telemetry
+- Device errors
+
+## 🎯 Key Features
+
+- **Temporal Filtering**: Events appear progressively as simulation time advances
+- **Progress Tracking**: Visual progress bars and percentage completion
+- **Status Indicators**: Color-coded trip states (completed, in-progress, cancelled)
+- **Event History**: Expandable timeline showing last 5 events per trip
+- **Responsive Stats**: Real-time updates to fleet-wide metrics
+
+## 🏗️ Architecture Highlights
+
+- **Custom Hooks**: Separation of state logic from UI components
+- **Service Layer**: Centralized data fetching and transformation
+- **Pure Functions**: Testable utility functions for event processing
+- **Component Composition**: Small, focused, reusable components
+- **Modern CSS**: Variables, animations, responsive design without frameworks
+
+## � Documentation
+
+- [Architecture Guide](ARCHITECTURE.md) - Detailed React best practices
+- [Quick Start](QUICK_START.md) - Pattern reference and code snippets
+
+## 🎓 Learning Outcomes
+
+This project demonstrates:
+- Real-time data simulation and temporal filtering
+- React hooks for complex state management
+- Service-oriented architecture in frontend
+- Event-driven data processing
+- Responsive UI design principles
+- Clean code organization and documentation
+
+## 📄 License
+
+MIT License - feel free to use for learning and portfolio purposes
+
+## 🤝 Contributing
+
+This is an assessment project, but suggestions and improvements are welcome!
+
+## 👤 Author
+
+Pratik Jawale
+- GitHub: [@pratik183](https://github.com/pratik183)
+
+## 🙏 Acknowledgments
+
+- MapUp for the assessment challenge
+- OSRM Project for routing data
+- React team for excellent documentation
+
+>>>>>>> fda6e6d (Initial commit: Fleet Tracking Dashboard)
